@@ -1,7 +1,6 @@
 import {SET_USER} from './action';
 
 const INITIAL_STATE = {
-  niraj:{Name:"niraj"}
 };
 
 const userProfile = (state = INITIAL_STATE, action) => {
@@ -9,7 +8,7 @@ const userProfile = (state = INITIAL_STATE, action) => {
     case SET_USER:
     return Object.assign({}, state, {
           ...state.setUser,
-          text: action.text,
+          ...action.text,
           completed: false
         
       })

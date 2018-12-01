@@ -1,4 +1,4 @@
-import { StyleSheet } from 'React-native';
+import { StyleSheet } from "react-native";
 
 const globle = StyleSheet.create({
     titleFont: {
@@ -6,3 +6,7 @@ const globle = StyleSheet.create({
     }
 })
 export default globle;
+
+export const colors = {
+    PRIMARY_COLOR: '#2aabb8',
+  };

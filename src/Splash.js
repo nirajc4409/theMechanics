@@ -1,25 +1,29 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { connect } from "react-redux";
-import { setUser } from "../redux/user/action";
-import globle from "../common/globle";
+import { setUser } from "./redux/user/action";
+import globle from "./common/globle";
+import { Actions } from "react-native-router-flux";
 
-class MainContainer extends Component {
-  componentWillMount() {
-  }
+class Splash extends Component {
+  componentWillMount = () => {
+    setTimeout(() => {
+        Actions.Login()
+    }, 10000);
+  };
+
   render() {
-    console.log("this.props", this.props);
     return (
-      <View>
-        <Text style={globle.titleFont}>{this.props.user.email}</Text>
-      </View>
-    );
+            <View>
+                <Text>hello Splash</Text>
+            </View>
+            )
   }
 }
 const mapStateToProps = state => {
   console.log("props states", state);
   return {
-    user: state.userProfile
+    counter: state
   };
 };
 
@@ -31,4 +35,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainContainer);
+)(Splash);
