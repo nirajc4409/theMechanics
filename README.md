@@ -1,1 +1,3 @@
 # theMechanics
+
+# start the project 
