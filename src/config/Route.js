@@ -9,12 +9,12 @@ import {
   Tabs,
   Modal,
   Drawer,
-  Stack,
-  Lightbox
+  Stack
 } from "react-native-router-flux";
 import MainContainer from "../container/MainContainer";
 import Login from "../container/Login";
 import Splash from "../Splash";
+import SignUp from "../container/SignUp";
 
 export default class Routes extends Component {
   render() {
@@ -27,6 +27,11 @@ export default class Routes extends Component {
             key="MainContainer"
             component={MainContainer}
             title="The Mechanic"
+          />
+          <Scene
+            key="SignUp"
+            component={SignUp}
+            title="Join As"
           />
         </Stack>
       </Router>

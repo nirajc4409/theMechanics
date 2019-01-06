@@ -1,19 +1,35 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { setUser } from "../redux/user/action";
-import globle from "../common/globle";
 import LoginForm from "../component/LoginForm";
+import { Actions } from "react-native-router-flux";
+import firebase from 'react-native-firebase';
 
 class Login extends Component {
-  componentWillMount() {
-    // this.props.firstAction ();
+  constructor(props){
+    super(props);
+    this.state = {
+      email:'',
+      password:''
+    }
   }
+
+  _login = (values) => {
+    const { setUser } = this.props;
+    console.log("values",values);
+    if(values){
+      setUser({...values})
+      Actions.MainContainer()
+    }
+  }
+
   render() {
     console.log("this.props", this.props);
     return (
       <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-        <LoginForm/>
+        <LoginForm onSubmit={this._login}/>
+        <TouchableOpacity onPress={()=> Actions.SignUp()}><Text>sign Up</Text></TouchableOpacity>
       </View>
     );
   }
@@ -26,7 +42,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  firstAction: value => {
+  setUser: value => {
     dispatch(setUser(value));
   }
 });

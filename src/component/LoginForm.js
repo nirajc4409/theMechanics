@@ -8,18 +8,9 @@ import TextField from "./common/TextField";
 import { Actions } from "react-native-router-flux";
 
 class LoginForm extends Component {
-  
-  _login = (values) =>{
-    const { setUser } = this.props;
-    console.log("values",values);
-    if(values){
-      setUser({...values})
-      Actions.MainContainer()
-    }
-  }
-  
+ 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, onSubmit } = this.props;
     console.log("this.props", this.props);
     return (
       <View>
@@ -29,7 +20,7 @@ class LoginForm extends Component {
 
         <View style={{marginTop:20}}>
           <Button
-            onPress={handleSubmit(this._login)}
+            onPress={handleSubmit(onSubmit)}
             title="Login"
             color="#841584"
             accessibilityLabel="Learn more about this purple button"

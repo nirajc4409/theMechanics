@@ -1,23 +1,24 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import { setUser } from "./redux/user/action";
-import globle from "./common/globle";
+import { setUser } from "../redux/user/action";
 import { Actions } from "react-native-router-flux";
+import SignUpMain from "../component/SignUpMain";
 
-class Splash extends Component {
-  componentWillMount = () => {
-    setTimeout(() => {
-        Actions.Login()
-    }, 10000);
-  };
+class SignUp extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+    }
+  }
 
   render() {
+    console.log("this.props", this.props);
     return (
-      <View>
-          <Text>hello Splash</Text>
+      <View style={{flex:1}}>
+        <SignUpMain/>
       </View>
-      )
+    );
   }
 }
 const mapStateToProps = state => {
@@ -28,11 +29,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  firstAction: value => {
+  setUser: value => {
     dispatch(setUser(value));
   }
 });
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Splash);
+)(SignUp);
