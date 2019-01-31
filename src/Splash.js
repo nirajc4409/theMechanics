@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
 import { connect } from "react-redux";
 import { setUser } from "./redux/user/action";
 import globle from "./common/globle";

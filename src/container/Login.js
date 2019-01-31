@@ -17,11 +17,27 @@ class Login extends Component {
 
   _login = (values) => {
     const { setUser } = this.props;
+    const {email, password} = values;
     console.log("values",values);
-    if(values){
-      setUser({...values})
-      Actions.MainContainer()
-    }
+
+    firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+    .then((res)=>{
+      console.log("res",res);
+      if(res){
+        setUser({...values})
+        Actions.MainContainer()
+      }
+    })
+    .catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      } else {
+        alert(errorMessage);
+      }
+    });
   }
 
   render() {
